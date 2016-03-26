@@ -1,35 +1,486 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Socket.IO chat</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-    </style>
-  </head>
-  <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <title>Data Analytics Dashboard</title>
+
+  <link rel="stylesheet" type="text/css" href="./public/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="./public/css/keen-dashboards.css" />
+  <link rel="stylesheet" type="text/css" href="connected-devices.css" />
+</head>
+<body class="application">
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="navbar-brand" href="./">Data Analytics Dashboard</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-sm-6">
+
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Profile
+          </div>
+          <div class="chart-stage">
+            <div class="row">
+              <div class="col-xs-3">
+<!-- insert profile content here -->
+<div class="containersss">
+  <img src="http://media.makeadare.com/img/6160cf6aa/image_bceabb1299.jpg" alt="W3Schools.com" width="150" height="150">
+
+
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Occupation</th>
+        <th>Age</th>
+        <th>Heart Rate</th>
+        <th>Health Level</th>
+        <th>Condition</th>
+      </tr>
+
+
+    </thead>
+    <tbody>
+      <tr>
+        <td>John Doe</td>
+        <td>Doctor</td>
+        <td>45</td>
+        <td class="BPM"></td>
+        <td class="Health"></td>
+        <td>Stable</td>
+      </tr>
+    </tbody>
+  </table>
+
+<div class="progressbars">
+  <div class="progress">
+    <div class="progress-bar progress-bar-success progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+    </div>
+  </div>
+
+
+  <div class="progress">
+    <div class="progress-bar progress-bar-info progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+    </div>
+
+  </div>
+  <div class="progress">
+    <div class="progress-bar progress-bar-warning progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:60%">
+    </div>
+
+
+  </div>
+
+</div>
+</div>
+
+              </div>
+              <div class="col-xs-9">
+                <div class="tab-content">
+                 <div class="tab-pane active" id="visitors"></div>
+                 <div class="tab-pane" id="browser"></div>
+                 <div class="tab-pane" id="geography"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Medical Bot
+          </div>
+          <div class="chart-stage">
+            <div class="row">
+
+              <div class="col-sm-6">
+                <div class="chart-title knob-title">
+                  Messages sent
+                </div>
+                <div class="chart-stage">
+
+
+
+
+                  <button id='ledon-button'>Text patient</button>
+                  <script src='clientside.js'></script>
+                  <div id="output">0</div>
+                  <script>
+                    $('#ledon-button').click(function() {
+    $('#output').html(function(i, val) { return val*1+1 });
+});
+                  </script>
+                </div>
+              </div>
+
+
+              <div class="col-sm-6">
+                <div class="chart-title knob-title">
+                  Calls sent
+                </div>
+                <div class="chart-stage">
+                    <button id='ledon-button2'>Call patient</button>
+                <script src='clientside2.js'></script>
+                  <div id="output2">0</div>
+                  <script>
+                    $('#ledon-button2').click(function() {
+    $('#output2').html(function(i, val) { return val*1+1 });
+});
+                  </script>
+                </div>
+
+
+              </div>
+
+<div class="Smiley"></div>
+<style>.Smiley{padding-left: 250px;}</style>
+
+                <div class="Text_Smiley"></div>
+                <style>.Text_Smiley{padding-left: 275px;}</style>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Live Data Feed
+          </div>
+          <div class="chart-stage">
+            <!-- <div id="chart-05"></div> -->
+            <div id="container"></div>
+
+<script>
+$(function () {
+    $(document).ready(function () {
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+
+        $('#container').highcharts({
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                events: {
+                    load: function () {
+
+                        // set up the updating of the chart each second
+                        var series = this.series[0];
+                        setInterval(function () {
+                            var x = (new Date()).getTime(), // current time
+                                y = Math.random();
+                                console.log(y*10);
+                                if (y < 0.5)
+                                {
+                                    console.log('less than half');
+                                    $(".BPM").html("less than half");
+                                } else {
+                                    console.log('more than half');
+                                    $(".BPM").html("more than half");
+                                }
+
+                                if (y >= 0.7){
+                                  console.log('Happy');
+                                  // $(".Smiley").html("more than half");
+                                  $(".Smiley").html("<img src='/public/img/happy.png'> ");
+                                  $(".Text_Smiley").html("Happy");
+                                  $(".Health").html("" + y*100);
+                                }
+                                else if (y <= 0.3)
+                                {
+                                  console.log('Sad');
+                                  // $(".Smiley").html("more than half");
+                                  $(".Smiley").html("<img src='/public/img/frown.png'> ");
+                                  $(".Text_Smiley").html("Sad");
+                                 $(".Health").html("" + y*100);
+                                }
+                                else
+                                {
+                                  console.log('neutral');
+                                  // $(".Smiley").html("more than half");
+                                  $(".Smiley").html("<img src='/public/img/neutral.png'> ");
+                                  $(".Text_Smiley").html("Neutral");
+                                  $(".Health").html("" + y*100);
+                                }
+                            series.addPoint([x, y], true, true);
+                        }, 1000);
+                    }
+                }
+            },
+            title: {
+                text: 'Live health data'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150
+            },
+            yAxis: {
+                title: {
+                    text: 'Health Level'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                        Highcharts.numberFormat(this.y, 2);
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: 'Random data',
+                data: (function () {
+                    // generate an array of random data
+
+                    var data = [],
+                        time = (new Date()).getTime(),
+                        i;
+
+
+                    for (i = -19; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+                            y: 0.75
+                        });
+                    }
+                    return data;
+                }())
+            }]
+        });
+    });
+});
+</script>
+
+          </div>
+          <div class="chart-notes">
+          </div>
+        </div>
+      </div>
+
+<!-- google maps api -->
+      <div class="col-sm-6" id="mapwrap">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            <div class="btn-group-xs">Active Users
+              <!-- <button type="button" id="7days" class="btn btn-default">7 Days</button>
+              <button type="button" id="14days" class="btn btn-default">14 Days</button>
+              <button type="button" id="28days" class="btn btn-default">28 Days</button> -->
+            </div>
+          </div>
+          <div class="chart-stage">
+
+
+      <div id="floating-panel">
+      <button onclick="toggleHeatmap()">Toggle Heatmap</button>
+      <button onclick="changeGradient()">Change gradient</button>
+      <button onclick="changeRadius()">Change radius</button>
+      <button onclick="changeOpacity()">Change opacity</button>
+    </div>
+    <div id="map"></div>
     <script>
-      var socket = io();
-      $('form').submit(function(){
-        socket.emit('chat message', $('#m').val());
-        $('#m').val('');
-        return false;
-      });
-      socket.on('chat message', function(msg){
-        $('#messages').append($('<li>').text(msg));
-      });
+
+      // This example requires the Visualization library. Include the libraries=visualization
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
+
+      var map, heatmap;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: {lat: 37.775, lng: -122.434},
+          mapTypeId: google.maps.MapTypeId.SATELLITE
+        });
+
+        heatmap = new google.maps.visualization.HeatmapLayer({
+          data: getPoints(),
+          map: map
+        });
+      }
+
+      function toggleHeatmap() {
+        heatmap.setMap(heatmap.getMap() ? null : map);
+      }
+
+      function changeGradient() {
+        var gradient = [
+          'rgba(0, 255, 255, 0)',
+          'rgba(0, 255, 255, 1)',
+          'rgba(0, 191, 255, 1)',
+          'rgba(0, 127, 255, 1)',
+          'rgba(0, 63, 255, 1)',
+          'rgba(0, 0, 255, 1)',
+          'rgba(0, 0, 223, 1)',
+          'rgba(0, 0, 191, 1)',
+          'rgba(0, 0, 159, 1)',
+          'rgba(0, 0, 127, 1)',
+          'rgba(63, 0, 91, 1)',
+          'rgba(127, 0, 63, 1)',
+          'rgba(191, 0, 31, 1)',
+          'rgba(255, 0, 0, 1)'
+        ]
+        heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+      }
+
+      function changeRadius() {
+        heatmap.set('radius', heatmap.get('radius') ? null : 20);
+      }
+
+      function changeOpacity() {
+        heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
+      }
+
+      // Heatmap data: 500 Points
+      function getPoints() {
+
+
+        return [
+          new google.maps.LatLng(37.782551, -122.445368),
+          new google.maps.LatLng(37.784147, -122.439668),
+          new google.maps.LatLng(37.784437, -122.422924),
+          new google.maps.LatLng(37.780148, -122.392052),
+          new google.maps.LatLng(37.786262, -122.395780),
+                  ];
+      }
     </script>
-  </body>
+
+    <!-- heat map google api -->
+<div id="floating-panel">
+      <button onclick="toggleHeatmap()">Toggle Heatmap</button>
+      <button onclick="changeGradient()">Change gradient</button>
+      <button onclick="changeRadius()">Change radius</button>
+      <button onclick="changeOpacity()">Change opacity</button>
+    </div>
+    <div id="map"></div>
+    <script>
+
+      var map, heatmap;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: {lat: 37.775, lng: -122.434},
+          mapTypeId: google.maps.MapTypeId.SATELLITE
+        });
+
+        heatmap = new google.maps.visualization.HeatmapLayer({
+          data: getPoints(),
+          map: map
+        });
+      }
+
+      function toggleHeatmap() {
+        heatmap.setMap(heatmap.getMap() ? null : map);
+      }
+
+      function changeGradient() {
+        var gradient = [
+          'rgba(0, 255, 255, 0)',
+          'rgba(0, 255, 255, 1)',
+          'rgba(0, 191, 255, 1)',
+          'rgba(0, 127, 255, 1)',
+          'rgba(0, 63, 255, 1)',
+          'rgba(0, 0, 255, 1)',
+          'rgba(0, 0, 223, 1)',
+          'rgba(0, 0, 191, 1)',
+          'rgba(0, 0, 159, 1)',
+          'rgba(0, 0, 127, 1)',
+          'rgba(63, 0, 91, 1)',
+          'rgba(127, 0, 63, 1)',
+          'rgba(191, 0, 31, 1)',
+          'rgba(255, 0, 0, 1)'
+        ]
+        heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+      }
+
+      function changeRadius() {
+        heatmap.set('radius', heatmap.get('radius') ? null : 20);
+      }
+
+      function changeOpacity() {
+        heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
+      }
+
+      // Heatmap data: 500 Points
+      function getPoints() {
+
+
+        return [
+          new google.maps.LatLng(37.782551, -122.445368),
+          // new google.maps.LatLng(37.784147, -122.439668),
+          // new google.maps.LatLng(37.784437, -122.422924),
+          // new google.maps.LatLng(37.786262, -122.395780),
+                  ];
+      }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzzkH2_xIWsb0gACkPKf1PldxmljIzp3A&libraries=visualization&callback=initMap">
+    </script>
+
+
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+</body>
 </html>

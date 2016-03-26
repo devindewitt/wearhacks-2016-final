@@ -4,6 +4,8 @@
   "description": "my first socket.io app",
   "dependencies": {
     "express": "4.10.2",
-    "socket.io": "1.2.0"
+    "path": "^0.12.7",
+    "socket.io": "1.2.0",
+    "twilio": "^2.9.0"
   }
 }
