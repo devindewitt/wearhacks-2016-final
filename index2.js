@@ -64,7 +64,7 @@ console.log(fun);
 
 
 
-// after the button click, posted this will be available
+// after the button click this will be available
 app.post('/LEDon', function(req, res) {
     console.log('texting');
     client.messages.create({
@@ -97,21 +97,10 @@ client.calls.create({
 
 
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
-});
-
-app.get('/2', function(req, res){
   res.sendFile(__dirname + '/index2.html');
 });
 
-app.get('/3', function(req, res){
-  res.sendFile(__dirname + '/index3.html');
-});
 
-app.get('/4', function(req, res){
-  res.sendFile(__dirname + '/index4.html');
-});
-
-app.listen(3000, function(){
-  console.log('listening on *:3000');
+app.listen(4000, function(){
+  console.log('listening on *:4000');
 });
